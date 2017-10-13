@@ -1,6 +1,6 @@
 {
   "name": "simplify-grid",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Custom flexbox grid for modern web browser",
   "main": "index.js",
   "scripts": {
