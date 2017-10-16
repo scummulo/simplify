@@ -131,18 +131,18 @@ html {
 
   &.align-stretch {
     -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
+    -ms-flex-align: stretch;
     align-items: stretch;
   }
 
   &.align-baseline {
     -webkit-box-align: baselin  e;
-  -ms-flex-align: baseline;
+    -ms-flex-align: baseline;
     align-items: baseline;
   }
 
-  // Mixin column
-  @mixin make-col() {
+  > .col,
+  [class*="col-"] {
     position: relative;
     width: 100%;
     min-height: 1px;
@@ -154,10 +154,6 @@ html {
     -ms-flex-positive: 1;
     flex-grow: 1;
     max-width: 100%;
-  }
-
-  > .col {
-    @include make-col;
 
     &.align-start {
       -ms-flex-item-align: start;
@@ -176,9 +172,8 @@ html {
   }
 
   > .col {
-    @for $i from 0 through $grid-columns {
+    @for $i from 1 through $grid-columns {
       &-xs-#{$i} {
-        @include make-col;
         -webkit-box-flex: 0;
         -ms-flex: 0 0 percentage($i / $grid-columns);
         flex: 0 0 percentage($i / $grid-columns);
@@ -187,9 +182,8 @@ html {
     }
 
     @media (min-width: map-get($grid-breakpoints, sm)) {
-      @for $i from 0 through $grid-columns {
+      @for $i from 1 through $grid-columns {
         &-sm-#{$i} {
-          @include make-col;
           -webkit-box-flex: 0;
           -ms-flex: 0 0 percentage($i / $grid-columns);
           flex: 0 0 percentage($i / $grid-columns);
@@ -199,9 +193,8 @@ html {
     }
 
     @media (min-width: map-get($grid-breakpoints, md)) {
-      @for $i from 0 through $grid-columns {
+      @for $i from 1 through $grid-columns {
         &-md-#{$i} {
-          @include make-col;
           -webkit-box-flex: 0;
           -ms-flex: 0 0 percentage($i / $grid-columns);
           flex: 0 0 percentage($i / $grid-columns);
@@ -211,9 +204,8 @@ html {
     }
 
     @media (min-width: $grid-size) {
-      @for $i from 0 through $grid-columns {
+      @for $i from 1 through $grid-columns {
         &-lg-#{$i} {
-          @include make-col;
           -webkit-box-flex: 0;
           -ms-flex: 0 0 percentage($i / $grid-columns);
           flex: 0 0 percentage($i / $grid-columns);
