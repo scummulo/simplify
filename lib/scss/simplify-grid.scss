@@ -84,64 +84,30 @@ html {
   margin-right: (map-get($grid-settings, gutter) / -2);
   margin-left:  (map-get($grid-settings, gutter) / -2);
 
-  &.justify-start {
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
+  &.justify-start { -webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; }
+  &.justify-end { -webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end; }
+  &.justify-center { -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
+  &.justify-between { -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+  &.justify-around { -ms-flex-pack: distribute; justify-content: space-around; }
+
+  &.align-start { -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; }
+  &.align-end { -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; }
+  &.align-center { -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+  &.align-stretch { -webkit-box-align: stretch; -ms-flex-align: stretch; align-items: stretch;}
+  &.align-baseline { -webkit-box-align: baseline; -ms-flex-align: baseline; align-items: baseline; }
+
+  &[class*="justify-"],
+  &[class*="align-"] {
+    > .col {
+      flex-grow: 0;
+      white-space: nowrap
+    }
   }
 
-  &.justify-end {
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-  }
-
-  &.justify-center {
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-
-  &.justify-space-between {
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-  }
-
-  &.justify-space-around {
-    -ms-flex-pack: distribute;
-    justify-content: space-around;
-  }
-
-  &.align-start {
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-  }
-
-  &.align-end {
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    align-items: flex-end;
-  }
-
-  &.align-center {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
-
-  &.align-stretch {
-    -webkit-box-align: stretch;
-    -ms-flex-align: stretch;
-    align-items: stretch;
-  }
-
-  &.align-baseline {
-    -webkit-box-align: baseline;
-    -ms-flex-align: baseline;
-    align-items: baseline;
-  }
+  @media (max-width: map-get($grid-breakpoints, sm)) { &.wrap-sm { > .col { flex-basis: initial; }}}
+  @media (max-width: map-get($grid-breakpoints, md)) { &.wrap-md { > .col { flex-basis: initial; }}}
+  @media (max-width: map-get($grid-breakpoints, lg)) { &.wrap-lg { > .col { flex-basis: initial; }}}
+  @media (max-width: map-get($grid-breakpoints, xl)) { &.wrap-xl { > .col { flex-basis: initial; }}}
 
   > .col,
   > [class*="col-"] {
@@ -152,20 +118,9 @@ html {
     padding-left:  (map-get($grid-settings, gutter) / 2);
     max-width: 100%;
 
-    &.align-start {
-      -ms-flex-item-align: start;
-      align-self: flex-start;
-    }
-
-    &.align-center {
-      -ms-flex-item-align: center;
-      align-self: center;
-    }
-
-    &.align-end {
-      -ms-flex-item-align: end;
-      align-self: flex-end;
-    }
+    &.align-start { -ms-flex-item-align: start; align-self: flex-start; }
+    &.align-center { -ms-flex-item-align: center; align-self: center; }
+    &.align-end { -ms-flex-item-align: end; align-self: flex-end; }
 
     @for $i from 1 through map-get($grid-settings, columns) {
       &.order-#{$i} {
